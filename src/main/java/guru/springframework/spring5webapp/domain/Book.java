@@ -13,7 +13,9 @@ public class Book {
     private long id;
     private String title;
     private String isbn;
-   @OneToMany(mappedBy = "book")
+   @ManyToMany
+   @JoinTable(name ="author_book", joinColumns = @JoinColumn(name = "book_id"),
+           inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author>authors;
 
     public Book() {
